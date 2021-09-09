@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Box, Flex, Stack, Tag, Text } from "@chakra-ui/react";
 
 import { supabase } from "../../utils/supabaseClient";
@@ -34,7 +34,7 @@ const SsgId: NextPage<ContentTable> = (props) => {
   );
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const { data, error, status } = await supabase
     .from("contents")
     .select("*")
@@ -45,7 +45,7 @@ export async function getStaticPaths() {
   }));
 
   return { paths, fallback: false };
-}
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data, error, status } = await supabase
