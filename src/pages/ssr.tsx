@@ -45,6 +45,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     .eq("id", 1)
     .single();
 
+  if (!data) return { notFound: true };
+
   return {
     props: data,
   };

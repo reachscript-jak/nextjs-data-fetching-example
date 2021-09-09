@@ -70,6 +70,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     .eq("id", `${params.id}`)
     .single();
 
+  if (!data) return { notFound: true };
+
   return {
     props: data,
     revalidate: 10,
