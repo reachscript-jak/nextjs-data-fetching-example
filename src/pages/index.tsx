@@ -31,10 +31,10 @@ const Index = () => {
           <a>↑のidで動的SSG(fallback: false)</a>
         </Link>
         <Link href={`/post2/${inputId}`}>
-          <a>↑のidで動的SSG(fallback: true)</a>
+          <a>↑のidで動的SSG(fallback: true, revalidate)</a>
         </Link>
         <Link href={`/post3/${inputId}`}>
-          <a>↑のidで動的SSG(fallback: blocking)</a>
+          <a>↑のidで動的SSG(fallback: blocking, revalidate)</a>
         </Link>
       </Stack>
     </Flex>
