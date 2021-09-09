@@ -17,7 +17,7 @@ const Index = () => {
         <Link href="/ssg">
           <a>SSG</a>
         </Link>
-        <Link href="/isr">
+        <Link href="/isr" prefetch={false}>
           <a>ISR</a>
         </Link>
         <Divider />
@@ -30,10 +30,10 @@ const Index = () => {
         <Link href={`/post/${inputId}`}>
           <a>↑のidで動的SSG(fallback: false)</a>
         </Link>
-        <Link href={`/post2/${inputId}`}>
-          <a>↑のidで動的SSG(fallback: true, revalidate)</a>
+        <Link href={`/post2/${inputId}`} prefetch={false}>
+          <a>↑のidで動的SSG(fallback: true)</a>
         </Link>
-        <Link href={`/post3/${inputId}`}>
+        <Link href={`/post3/${inputId}`} prefetch={false}>
           <a>↑のidで動的SSG(fallback: blocking, revalidate)</a>
         </Link>
       </Stack>
