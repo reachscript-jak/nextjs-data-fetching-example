@@ -1,9 +1,4 @@
-import { useState } from "react";
-import {
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-  NextPage,
-} from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { Box, Flex, Stack, Tag, Text } from "@chakra-ui/react";
 
 import { supabase } from "../utils/supabaseClient";
