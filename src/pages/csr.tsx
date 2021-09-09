@@ -48,7 +48,7 @@ const Csr: NextPage = () => {
       <Text fontSize="2xl">id : {content.id}</Text>
       <Stack spacing={4} mt={6}>
         {content.contents.map((poke) => (
-          <Box>
+          <Box key={poke}>
             <Tag color="teal.600" py={4} px={8} fontWeight="bold" size="2xl">
               {poke}
             </Tag>
