@@ -1,9 +1,20 @@
 import Link from "next/link";
-import { Divider, Flex, Input, Stack } from "@chakra-ui/react";
+import { Button, Divider, Flex, Input, Stack } from "@chakra-ui/react";
 import { ChangeEvent, useState } from "react";
 
 const Index = () => {
   const [inputId, setInputId] = useState("");
+  const [isLoadingRevaridate, setIsLoadingRevaridate] = useState(false);
+
+  const ondemandRevalidate = async () => {
+    setIsLoadingRevaridate(true);
+    await fetch("api/revalidate")
+      .then(() => setIsLoadingRevaridate(false))
+      .catch((error) => {
+        setIsLoadingRevaridate(false);
+        console.error("error", error);
+      });
+  };
 
   return (
     <Flex justify="center" align="center" h="100vh">
@@ -36,6 +47,22 @@ const Index = () => {
         <Link href={`/post3/${inputId}`} prefetch={false}>
           <a>↑のidで動的SSG(fallback: blocking, revalidate)</a>
         </Link>
+        <br />
+        <br />
+        <Divider />
+        <Link href="/isr60a" prefetch={false}>
+          <a>ISR(revaridate60、Ondemand ISR対象)</a>
+        </Link>
+        <Link href="/isr60b" prefetch={false}>
+          <a>ISR(revaridate60、Ondemand ISR非対象)</a>
+        </Link>
+        <Button
+          colorScheme={"teal"}
+          isLoading={isLoadingRevaridate}
+          onClick={() => ondemandRevalidate()}
+        >
+          revalidate
+        </Button>
       </Stack>
     </Flex>
   );
